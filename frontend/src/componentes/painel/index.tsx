@@ -3,19 +3,22 @@ import CarregadorClientes from "../../carregadores/carregadorClientes";
 import RemovedorCliente from "../../removedores/removedorCliente";
 import Barra from "../barra";
 import Clientes from "../clientes";
+import FormularioCliente from "../formulario";
 import Menu from "../menu";
 
 type props = {
     textoApp: string
 }
 type state = {
-    clientes: []
+    clientes: [],
+    botao: string
 }
 class Painel extends Component<props, state> {
     constructor(props) {
         super(props)
         this.state = {
-            clientes: []
+            clientes: [],
+            botao: 'cadastro'
         }
         this.excluirCliente = this.excluirCliente.bind(this)
         this.carregarClientes = this.carregarClientes.bind(this)
@@ -42,14 +45,26 @@ class Painel extends Component<props, state> {
         this.carregarClientes()
     }
 
-    render() { 
-        return (
-            <>
-                <Barra textoApp={this.props.textoApp} />
-                <Clientes clientes={this.state.clientes} exclusao={this.excluirCliente} />
-                <Menu />
-            </>
-        )
+    render() {
+        let botao = this.state.botao
+        if (botao === 'clientes') {
+            return (
+                <>
+                    <Barra textoApp={this.props.textoApp} />
+                    <Clientes clientes={this.state.clientes} exclusao={this.excluirCliente} />
+                    <Menu />
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Barra textoApp={this.props.textoApp} />
+                    <FormularioCliente />
+                    <Menu />
+                </>
+            )
+        }
+
     }
 
 }
