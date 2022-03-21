@@ -2,7 +2,7 @@
 import { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 import M from 'materialize-css'
-import Botao from "../botao";
+import Botao from "./botao";
 
 type props = {
     selecionarBotao: Function
@@ -28,6 +28,7 @@ class Menu extends Component<props> {
                     </a>
                     <ul>
                         <Botao nome="cadastrar" icon="add" selecionarBotao={this.props.selecionarBotao} />
+                        <Botao nome="clientes" icon="people" selecionarBotao={this.props.selecionarBotao} />
                     </ul>
                 </div>
             </div>

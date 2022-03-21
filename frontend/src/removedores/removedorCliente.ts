@@ -1,7 +1,7 @@
 import { URI } from "../enuns/uri";
-import Removedor from "./removedor";
+import RemovedorRemoto from "./removedorRemoto";
 
-export default class RemovedorCliente implements Removedor {
+export default class RemovedorCliente implements RemovedorRemoto {
     public remover(objeto: Object): void {
         let json = { id: objeto['id'] }
         fetch(URI.DELETAR_CLIENTE, {

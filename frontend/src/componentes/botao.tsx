@@ -15,13 +15,13 @@ class Botao extends Component<props> {
     }
 
     public capturarClique() {
-
+        this.props.selecionarBotao(this.props.nome)
     }
 
     render() {
         return (
             <li>
-                <a className="btn-floating teal accent-3">
+                <a className="btn-floating teal accent-3" onClick={this.capturarClique}>
                     <i className="material-icons">{this.props.icon}</i>
                 </a>
             </li>

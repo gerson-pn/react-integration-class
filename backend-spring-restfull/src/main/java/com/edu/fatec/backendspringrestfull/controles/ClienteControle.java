@@ -34,7 +34,7 @@ public class ClienteControle {
 	public ResponseEntity<List<Cliente>> obterClientes() {
 		List<Cliente> clientes = repositorio.findAll();
 		if (clientes.isEmpty()) {
-			ResponseEntity<List<Cliente>> resposta = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			ResponseEntity<List<Cliente>> resposta = new ResponseEntity<>(clientes,HttpStatus.NOT_FOUND);
 			return resposta;
 		} else {
 			adicionadorLink.adicionarLink(clientes);

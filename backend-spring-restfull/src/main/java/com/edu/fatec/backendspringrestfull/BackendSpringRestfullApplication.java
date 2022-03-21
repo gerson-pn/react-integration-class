@@ -29,7 +29,7 @@ public class BackendSpringRestfullApplication {
 			Calendar calendario = Calendar.getInstance();
 			calendario.set(2002, 05, 15);
 			
-			for (int i = 0; i < 50; i++) {
+			for (int i = 0; i < 2; i++) {
 				Cliente cliente = new Cliente();
 				cliente.setNome("Pedro Alcântara de Bragança e Bourbon");
 				cliente.setDataCadastro(Calendar.getInstance().getTime());
