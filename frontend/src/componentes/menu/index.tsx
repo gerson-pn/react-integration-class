@@ -3,7 +3,12 @@ import { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 import M from 'materialize-css'
 import Botao from "../botao";
-class Menu extends Component {
+
+type props = {
+    selecionarBotao: Function
+}
+
+class Menu extends Component<props> {
 
     componentDidMount() {
         document.addEventListener('DOMContentLoaded', function () {
@@ -22,7 +27,7 @@ class Menu extends Component {
                         <i className="material-icons">person_add</i>
                     </a>
                     <ul>
-                        <Botao nome="cadastrar" icon="add" />
+                        <Botao nome="cadastrar" icon="add" selecionarBotao={this.props.selecionarBotao} />
                     </ul>
                 </div>
             </div>

@@ -4,14 +4,24 @@ import 'materialize-css/dist/css/materialize.min.css'
 
 type props = {
     nome: string,
-    icon: string
+    icon: string,
+    selecionarBotao: Function
 }
 
 class Botao extends Component<props> {
+    constructor(props) {
+        super(props)
+        this.capturarClique = this.capturarClique.bind(this)
+    }
+
+    public capturarClique() {
+
+    }
+
     render() {
         return (
             <li>
-                <a href="" className="btn-floating teal accent-3">
+                <a className="btn-floating teal accent-3">
                     <i className="material-icons">{this.props.icon}</i>
                 </a>
             </li>

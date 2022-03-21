@@ -7,7 +7,11 @@ type props = {
     exclusao: Function
 }
 class Clientes extends Component<props> {
-    excluir(id: string, e: Event) {
+    constructor(props){
+        super(props)
+        this.excluir = this.excluir.bind(this)
+    }
+    public excluir(id: string, e: any) {
         e.preventDefault()
         this.props.exclusao(id)
     }
@@ -19,7 +23,7 @@ class Clientes extends Component<props> {
                     <i className="material-icons circle">person</i>
                     <span className="title">{cliente['nome']}</span>
                     <p>{cliente['nomeSocial']}</p>
-                    <a target={"_self"} href='' onClick={this.excluir.bind(this, cliente['id'])} className="secondary-content">
+                    <a href="" target={"_self"} onClick={(e) => this.excluir(cliente['id'],e)} className="secondary-content">
                         <i className="material-icons">block</i>
                     </a>
                 </li>

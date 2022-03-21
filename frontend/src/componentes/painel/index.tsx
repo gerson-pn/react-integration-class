@@ -18,13 +18,14 @@ class Painel extends Component<props, state> {
         super(props)
         this.state = {
             clientes: [],
-            botao: 'cadastro'
+            botao: 'clientes'
         }
         this.excluirCliente = this.excluirCliente.bind(this)
         this.carregarClientes = this.carregarClientes.bind(this)
+        this.selecionarBotao = this.selecionarBotao.bind(this)
     }
 
-    carregarClientes() {
+    public carregarClientes() {
         let carregadorClientes = new CarregadorClientes()
         const clientesJson = carregadorClientes.carregar()
         clientesJson.then(clientes => {
@@ -34,11 +35,17 @@ class Painel extends Component<props, state> {
         })
     }
 
-    excluirCliente(idCliente: string) {
+    public excluirCliente(idCliente: string) {
         let removedor = new RemovedorCliente()
         removedor.remover({ id: idCliente })
         this.carregarClientes()
         this.carregarClientes()
+    }
+
+    public selecionarBotao(clique: string) {
+        this.setState({
+            botao: clique
+        })
     }
 
     componentDidMount() {
@@ -52,7 +59,7 @@ class Painel extends Component<props, state> {
                 <>
                     <Barra textoApp={this.props.textoApp} />
                     <Clientes clientes={this.state.clientes} exclusao={this.excluirCliente} />
-                    <Menu />
+                    <Menu selecionarBotao={this.selecionarBotao} />
                 </>
             )
         } else {
@@ -60,7 +67,7 @@ class Painel extends Component<props, state> {
                 <>
                     <Barra textoApp={this.props.textoApp} />
                     <FormularioCliente />
-                    <Menu />
+                    <Menu selecionarBotao={this.selecionarBotao} />
                 </>
             )
         }
