@@ -1,6 +1,8 @@
 package com.edu.fatec.backendspringrestfull;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -16,9 +18,15 @@ import com.edu.fatec.backendspringrestfull.repositorios.ClienteRepositorio;
 public class BackendSpringRestfullApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendSpringRestfullApplication.class, args);
+		// SpringApplication.run(BackendSpringRestfullApplication.class, args);
+		Map<String, Object> appConfiguration = new HashMap<>();
+		appConfiguration.put("server.port", "5555");
+
+		SpringApplication app = new SpringApplication(BackendSpringRestfullApplication.class);
+		app.setDefaultProperties(appConfiguration);
+		app.run(args);
 	}
-	
+
 	@Component
 	public static class Runner implements ApplicationRunner {
 		@Autowired
@@ -28,7 +36,7 @@ public class BackendSpringRestfullApplication {
 		public void run(ApplicationArguments args) throws Exception {
 			Calendar calendario = Calendar.getInstance();
 			calendario.set(2002, 05, 15);
-			
+
 			for (int i = 0; i < 2; i++) {
 				Cliente cliente = new Cliente();
 				cliente.setNome("Pedro Alcântara de Bragança e Bourbon");
